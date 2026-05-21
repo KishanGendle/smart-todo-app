@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-4">
+
+    <h2>
+        Welcome {{ session['user_name'] }}
+    </h2>
+
+    <a href="/logout" class="btn btn-danger">
+        Logout
+    </a>
+
+</div>
+
+<div class="card shadow p-3 mb-4">
+
+    <form method="GET" action="/dashboard">
+
+        <div class="row">
+
+            <div class="col-md-10">
+
+                <input type="text"
+                       name="search"
+                       class="form-control"
+                       placeholder="Search Tasks">
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button class="btn btn-dark w-100">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="card shadow p-4 mb-4">
+
+    <form method="POST" action="/add-task">
+
+        <div class="row">
+
+            <div class="col-md-10">
+
+                <input type="text"
+                       name="title"
+                       class="form-control"
+                       placeholder="Enter Task"
+                       required>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button class="btn btn-primary w-100">
+                    Add
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="row">
+
+{% for task in tasks %}
+
+<div class="col-md-6">
+
+    <div class="card shadow mb-3">
+
+        <div class="card-body">
+
+            <h5>
+                {{ task.title }}
+            </h5>
+
+            <p>
+                Created:
+                {{ task.created_at.strftime('%d-%m-%Y %H:%M') }}
+            </p>
+
+            {% if task.status == 'Completed' %}
+
+            <span class="badge bg-success">
+                Completed
+            </span>
+
+            {% else %}
+
+            <span class="badge bg-warning text-dark">
+                Pending
+            </span>
+
+            {% endif %}
+
+            <div class="mt-3">
+
+                {% if task.status != 'Completed' %}
+
+                <a href="/complete-task/{{ task._id }}"
+                   class="btn btn-success btn-sm">
+                    Complete
+                </a>
+
+                {% endif %}
+
+                <a href="/edit-task/{{ task._id }}"
+                   class="btn btn-primary btn-sm">
+                    Edit
+                </a>
+
+                <a href="/delete-task/{{ task._id }}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
