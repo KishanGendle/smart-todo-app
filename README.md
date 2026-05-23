@@ -120,6 +120,46 @@ http://127.0.0.1:5000
 
 ---
 
+# Kubernetes Setup
+
+Apply Namespace
+kubectl apply -f k8s/namespace.yaml
+
+Apply ConfigMap & Secret
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/secret.yaml
+
+Apply PV & PVC
+kubectl apply -f k8s/mongodb-pv.yaml
+kubectl apply -f k8s/mongodb-pvc.yaml
+
+Deploy MongoDB
+kubectl apply -f k8s/mongodb-deployment.yaml
+kubectl apply -f k8s/mongodb-service.yaml
+
+Deploy Flask App
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
+Enable Ingress
+minikube addons enable ingress
+
+Apply Ingress
+kubectl apply -f k8s/ingress.yaml
+
+# Verify Resources
+
+Pods
+kubectl get pods -n todo-app
+
+Services
+kubectl get svc -n todo-app
+
+Ingress
+kubectl get ingress -n todo-app
+
+---
+
 # Python Libraries Used
 
 - flask
