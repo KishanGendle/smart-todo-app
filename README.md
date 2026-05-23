@@ -67,27 +67,27 @@ cd todo-app
 ## 2. Create Virtual Environment
 
 ### Windows
-
+```text
 python -m venv venv
 
 venv\Scripts\activate
-
+```
 ### Linux/Mac
-
+```
 python3 -m venv venv
 
 source venv/bin/activate
-
+```
 ---
 
 ## 3. Install Dependencies
-
+```
 pip install -r requirements.txt
-
+```
 ---
 
 # Environment Variables
-
+```
 Create a .env file in the root directory.
 
 Example:
@@ -95,23 +95,23 @@ Example:
 MONGO_URI=mongodb://localhost:27017/todoapp
 
 SECRET_KEY=mysecretkey
-
+```
 ---
 
 # MongoDB Setup
-
+```
 Make sure MongoDB is installed and running locally.
 
 Default MongoDB Port:
 
 27017
-
+```
 ---
 
 # Run Application
-
+```
 python app.py
-
+```
 ---
 
 # Open Browser
