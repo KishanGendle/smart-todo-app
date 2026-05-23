@@ -115,49 +115,61 @@ python app.py
 ---
 
 # Open Browser
-
+```text
 http://127.0.0.1:5000
-
+```
 ---
 
 # Kubernetes Setup
 
-Apply Namespace
+## Apply Namespace
+```text
 kubectl apply -f k8s/namespace.yaml
-
-Apply ConfigMap & Secret
+```
+## Apply ConfigMap & Secret
+```text
 kubectl apply -f k8s/configmap.yaml
 kubectl apply -f k8s/secret.yaml
-
-Apply PV & PVC
+```
+## Apply PV & PVC
+```text
 kubectl apply -f k8s/mongodb-pv.yaml
 kubectl apply -f k8s/mongodb-pvc.yaml
-
-Deploy MongoDB
+```
+## Deploy MongoDB
+```text
 kubectl apply -f k8s/mongodb-deployment.yaml
 kubectl apply -f k8s/mongodb-service.yaml
-
-Deploy Flask App
+```
+## Deploy Flask App
+```text
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
-
-Enable Ingress
+```
+## Enable Ingress
+```text
 minikube addons enable ingress
-
-Apply Ingress
+```
+## Apply Ingress
+```text
 kubectl apply -f k8s/ingress.yaml
-
+```
 # Verify Resources
 
-Pods
+## Pods
+```text
 kubectl get pods -n todo-app
+```
 
-Services
+
+## Services
+```text
 kubectl get svc -n todo-app
-
-Ingress
+```
+## Ingress
+```text
 kubectl get ingress -n todo-app
-
+```
 ---
 
 # Python Libraries Used
